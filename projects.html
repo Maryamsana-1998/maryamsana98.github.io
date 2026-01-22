@@ -9,17 +9,41 @@
             max-width: 900px;
             margin: 40px auto;
             padding: 0 20px;
-            line-height: 1.6;
+            line-height: 1.65;
+            color: #222;
+        }
+        nav {
+            margin-bottom: 30px;
         }
         nav a {
-            margin-right: 15px;
+            margin-right: 18px;
             text-decoration: none;
             color: #0066cc;
+            font-weight: 500;
+        }
+        nav a:hover {
+            text-decoration: underline;
+        }
+        h1 {
+            margin-bottom: 10px;
         }
         h2 {
-            margin-top: 40px;
+            margin-top: 45px;
             border-bottom: 1px solid #ddd;
-            padding-bottom: 5px;
+            padding-bottom: 6px;
+        }
+        h3 {
+            margin-top: 30px;
+        }
+        img {
+            max-width: 100%;
+            margin: 20px 0;
+            border: 1px solid #ddd;
+            padding: 5px;
+            background: #fafafa;
+        }
+        ul {
+            margin-left: 20px;
         }
     </style>
 </head>
@@ -32,30 +56,65 @@
 </nav>
 
 <h1>Research Projects</h1>
+<p>
+    My research explores generative modeling under severe information constraints, with a focus on
+    perceptual fidelity, representation learning, and human-centric evaluation.
+</p>
 
 <section>
-    <h2>EEG / fMRI to Image Reconstruction</h2>
-    <p>
-        I investigate how visual information can be reconstructed from neural signals under severe information
-        constraints. My work uses EEG and fMRI datasets (e.g., THINGS, NSD) and frames reconstruction as a
-        probabilistic inference problem.
-    </p>
-    <p>
-        I design diffusion-based generative pipelines to model uncertainty, noise, and information bottlenecks,
-        and explore real-time EEG-to-image reconstruction under latency and robustness constraints.
-    </p>
-</section>
+    <h2>Perceptual Video Compression with Diffusion Models</h2>
 
-<section>
-    <h2>Perceptual Video Compression with Generative Models</h2>
+    <h3>Problem</h3>
     <p>
-        During my Master’s research, I developed diffusion-based video compression models that predict future
-        frames under constrained bitrates. The work focuses on perceptual fidelity rather than pixel accuracy,
-        integrating multimodal conditioning such as optical flow.
+        Video traffic dominates global internet bandwidth, creating critical challenges for real-time
+        transmission in bandwidth-limited environments. Ultra-low bitrate (ULB) video delivery in the
+        range of <strong>0.005–0.02 bits-per-pixel</strong> remains poorly addressed by both classical
+        codecs and existing learned video compression methods. Traditional codecs such as H.264 and HEVC,
+        optimized for pixel-level distortion, suffer from severe perceptual degradation at these rates.
     </p>
+
+    <h3>Method</h3>
     <p>
-        This project connects information theory, generative modeling, and human perception, studying how
-        representational capacity is allocated across space and time.
+        I developed the <strong>first diffusion-based learned video codec</strong> capable of operating
+        effectively in the ultra-low bitrate regime. The key idea is to eliminate conventional inter-frame
+        residual encoding and instead transmit only sparse, high-level semantic priors at the encoder.
+        These include latent keyframes and lightweight motion trajectories.
+    </p>
+
+    <p>
+        At the decoder, a <em>controllable diffusion model</em> reconstructs temporally coherent intermediate
+        frames, shifting complexity from transmission to generation. This enables realistic video synthesis
+        even at extreme compression rates.
+    </p>
+
+    <h3>Architecture</h3>
+    <p><strong>Encoder:</strong> Encodes sparse semantic priors and motion trajectories.</p>
+    <img src="projects/figs/Encoder.png" alt="Encoder Architecture">
+
+    <p><strong>Decoder:</strong> Uses a controllable diffusion process to synthesize inter-frames.</p>
+    <img src="projects/figs/Decoder.png" alt="Decoder Architecture">
+
+    <h3>Key Contributions</h3>
+    <ul>
+        <li>
+            A <em>semantic-guided generative video codec</em> that enables perceptually faithful reconstruction
+            below 0.02 bpp by synthesizing inter-frames at the decoder.
+        </li>
+        <li>
+            A <em>trajectory-aware synthesis module</em> that leverages sparse motion priors to improve
+            temporal coherence, yielding smoother perceptual degradation and lower LPIPS/FID.
+        </li>
+        <li>
+            A comprehensive evaluation against H.264, HEVC/VVC, and state-of-the-art learned codecs across
+            both distortion and perceptual metrics.
+        </li>
+    </ul>
+
+    <h3>Evaluation</h3>
+    <p>
+        Experiments on standard benchmarks demonstrate that the proposed approach significantly outperforms
+        classical codecs in perceptual quality at ultra-low bitrates, highlighting the potential of
+        generative compression for sustainable and human-centric video communication.
     </p>
 </section>
 
