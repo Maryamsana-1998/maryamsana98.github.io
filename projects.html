@@ -28,12 +28,12 @@
             margin-bottom: 10px;
         }
         h2 {
-            margin-top: 45px;
+            margin-top: 50px;
             border-bottom: 1px solid #ddd;
             padding-bottom: 6px;
         }
         h3 {
-            margin-top: 30px;
+            margin-top: 25px;
         }
         img {
             max-width: 100%;
@@ -44,6 +44,10 @@
         }
         ul {
             margin-left: 20px;
+        }
+        .status {
+            font-style: italic;
+            color: #555;
         }
     </style>
 </head>
@@ -57,65 +61,114 @@
 
 <h1>Research Projects</h1>
 <p>
-    My research explores generative modeling under severe information constraints, with a focus on
-    perceptual fidelity, representation learning, and human-centric evaluation.
+    My research focuses on generative modeling, perception, and decision-making under
+    severe information and resource constraints, spanning video, neural signals, and
+    embedded vision systems.
 </p>
+
+<!-- ================= PROJECT 1 ================= -->
 
 <section>
     <h2>Perceptual Video Compression with Diffusion Models</h2>
+    <p class="status">Status: Completed (Master’s Research)</p>
 
     <h3>Problem</h3>
     <p>
-        Video traffic dominates global internet bandwidth, creating critical challenges for real-time
-        transmission in bandwidth-limited environments. Ultra-low bitrate (ULB) video delivery in the
-        range of <strong>0.005–0.02 bits-per-pixel</strong> remains poorly addressed by both classical
-        codecs and existing learned video compression methods. Traditional codecs such as H.264 and HEVC,
-        optimized for pixel-level distortion, suffer from severe perceptual degradation at these rates.
+        Ultra-low bitrate (ULB) video delivery in the range of <strong>0.005–0.02 bpp</strong>
+        remains largely unsolved. Classical codecs such as H.264 and HEVC optimize for
+        pixel-level distortion and exhibit severe perceptual degradation at these rates.
     </p>
 
     <h3>Method</h3>
     <p>
-        I developed the <strong>first diffusion-based learned video codec</strong> capable of operating
-        effectively in the ultra-low bitrate regime. The key idea is to eliminate conventional inter-frame
-        residual encoding and instead transmit only sparse, high-level semantic priors at the encoder.
-        These include latent keyframes and lightweight motion trajectories.
-    </p>
-
-    <p>
-        At the decoder, a <em>controllable diffusion model</em> reconstructs temporally coherent intermediate
-        frames, shifting complexity from transmission to generation. This enables realistic video synthesis
-        even at extreme compression rates.
+        I developed the first diffusion-based learned video codec capable of operating
+        effectively in this regime. The encoder transmits only sparse, high-level semantic
+        priors—latent keyframes and lightweight motion trajectories—while a controllable
+        diffusion model at the decoder synthesizes temporally coherent intermediate frames.
     </p>
 
     <h3>Architecture</h3>
-    <p><strong>Encoder:</strong> Encodes sparse semantic priors and motion trajectories.</p>
     <img src="projects/figs/Encoder.png" alt="Encoder Architecture">
-
-    <p><strong>Decoder:</strong> Uses a controllable diffusion process to synthesize inter-frames.</p>
     <img src="projects/figs/Decoder.png" alt="Decoder Architecture">
 
     <h3>Key Contributions</h3>
     <ul>
+        <li>Semantic-guided generative video codec operating below 0.02 bpp.</li>
+        <li>Trajectory-aware synthesis improving temporal coherence and perceptual quality.</li>
+        <li>Comprehensive benchmarking against H.264, HEVC/VVC, and learned codecs.</li>
+    </ul>
+</section>
+
+<!-- ================= PROJECT 2 ================= -->
+
+<section>
+    <h2>EEG → Image Reconstruction with Generative Models</h2>
+    <p class="status">Status: Ongoing</p>
+
+    <h3>Motivation</h3>
+    <p>
+        This project investigates how visual information is represented and can be
+        reconstructed from neural signals under extreme information constraints.
+        The goal is to bridge computational neuroscience and generative modeling.
+    </p>
+
+    <h3>Approach</h3>
+    <p>
+        I work with EEG and fMRI data using established neuroscience toolkits (EEGLAB, MNE)
+        and large-scale public datasets such as THINGS and NSD. Reconstruction is framed as
+        a probabilistic inference problem, explicitly modeling uncertainty, noise, and
+        information bottlenecks.
+    </p>
+
+    <p>
+        Current work focuses on diffusion-based EEG-to-image reconstruction pipelines and
+        prototyping real-time systems that address latency, robustness, and entropy
+        constraints inherent to neural signals.
+    </p>
+
+    <!-- <h3>Architecture (Work in Progress)</h3>
+    <img src="eeg_architecture.jpg" alt="EEG to Image Reconstruction Architecture"> -->
+</section>
+
+<!-- ================= PROJECT 3 ================= -->
+
+<section>
+    <h2>Real-Time Disaster Management (RTDM) on Embedded UAV Platforms</h2>
+    <p class="status">Status: Completed (Undergraduate Research)</p>
+
+    <h3>Problem</h3>
+    <p>
+        Disaster response scenarios require rapid situational awareness under strict
+        constraints on computation, power, and latency. UAV-based systems must operate
+        fully on-board while performing accurate disaster detection and victim localization.
+    </p>
+
+    <h3>System Overview</h3>
+    <p>
+        I designed a Real-Time Disaster Management (RTDM) module that sequentially integrates
+        quantized image classification and object detection models. The system processes
+        live UAV camera feeds and communicates actionable insights to a ground control station.
+    </p>
+
+    <img src="projects/figs/RTDM_final.png" alt="RTDM Module Overview">
+
+    <h3>Key Contributions</h3>
+    <ul>
         <li>
-            A <em>semantic-guided generative video codec</em> that enables perceptually faithful reconstruction
-            below 0.02 bpp by synthesizing inter-frames at the decoder.
+            Designed <strong>Squeeze-ErNet</strong>, a quantized architecture achieving
+            ~94.4% accuracy at ~510 FPS on NVIDIA Jetson TX2.
         </li>
         <li>
-            A <em>trajectory-aware synthesis module</em> that leverages sparse motion priors to improve
-            temporal coherence, yielding smoother perceptual degradation and lower LPIPS/FID.
+            Systematic evaluation of quantization schemes for performance–accuracy trade-offs.
         </li>
         <li>
-            A comprehensive evaluation against H.264, HEVC/VVC, and state-of-the-art learned codecs across
-            both distortion and perceptual metrics.
+            Created the <strong>ODDER</strong> dataset for aerial emergency response
+            (2 classes, 1400+ images).
+        </li>
+        <li>
+            Deployment and power analysis on embedded UAV hardware.
         </li>
     </ul>
-
-    <h3>Evaluation</h3>
-    <p>
-        Experiments on standard benchmarks demonstrate that the proposed approach significantly outperforms
-        classical codecs in perceptual quality at ultra-low bitrates, highlighting the potential of
-        generative compression for sustainable and human-centric video communication.
-    </p>
 </section>
 
 </body>
