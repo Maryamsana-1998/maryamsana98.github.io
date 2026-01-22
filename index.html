@@ -17,13 +17,18 @@
             display: flex;
             align-items: center;
             gap: 30px;
-            margin-bottom: 40px;
+            margin-bottom: 30px;
         }
         img {
             width: 160px;
             height: 160px;
             border-radius: 50%;
             object-fit: cover;
+        }
+        nav a {
+            margin-right: 15px;
+            text-decoration: none;
+            color: #0066cc;
         }
         h1 {
             margin: 0;
@@ -33,9 +38,6 @@
             border-bottom: 1px solid #ddd;
             padding-bottom: 5px;
         }
-        ul {
-            margin-left: 20px;
-        }
         .subtitle {
             color: #555;
         }
@@ -44,63 +46,57 @@
 <body>
 
 <header>
-    <img src="profile.jpg" alt="Profile Picture">
+    <img src="profile_pic.jpg" alt="Profile Picture">
     <div>
         <h1>Maryam Sana</h1>
         <p class="subtitle">
-            AI Researcher · Machine Learning · Computational Neuroscience<br>
-            Prospective PhD Applicant
+            Machine Learning · Generative Models · Computational Neuroscience
         </p>
         <p>
-            Email: maryam.sana@email.com <br>
+            Email: maryam.sana@khu.ac.kr<br>
             GitHub: github.com/yourusername
         </p>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="projects.html">Projects</a>
+            <a href="awards.html">Awards & Funding</a>
+        </nav>
     </div>
 </header>
+
+<section>
+    <h2>Bio</h2>
+    <p>
+        I have completed my Master’s degree in Computer Science and am currently seeking PhD positions in
+        machine learning and computational neuroscience. My background lies at the intersection of deep learning,
+        generative modeling, and signal processing.
+    </p>
+    <p>
+        My research focuses on understanding and reconstructing perceptual representations from constrained
+        information sources, such as neural signals and compressed video. I have worked extensively with
+        diffusion models, VAEs, and multimodal learning, applying information-theoretic perspectives to both
+        artificial and biological systems.
+    </p>
+    <p>
+        Currently, I am working as a research assistant at the Psychcontrol Lab (UKGM Marburg), where I analyze
+        EEG and fMRI data to study how visual information is encoded and reconstructed from neural activity.
+        Previously, my Master’s research at Kyung Hee University focused on perceptual video compression using
+        diffusion-based generative models.
+    </p>
+</section>
 
 <section>
     <h2>Education</h2>
     <ul>
         <li>
             <strong>Master’s in Computer Science</strong><br>
-            Kyung Hee University, South Korea <br>
-            Focus: Generative AI, Video Compression, Deep Learning
+            Kyung Hee University, South Korea<br>
+            Focus: Generative Models, Video Compression, Deep Learning
         </li>
         <li>
             <strong>Bachelor’s in Electrical Engineering</strong><br>
             Focus: Signal Processing, Linear Algebra, Probability, Systems
         </li>
-    </ul>
-</section>
-
-<section>
-    <h2>Research Projects</h2>
-    <ul>
-        <li>
-            <strong>EEG / fMRI to Image Reconstruction</strong><br>
-            Diffusion-based generative models for reconstructing visual stimuli
-            from neural signals using EEG and fMRI data.
-        </li>
-        <li>
-            <strong>Diffusion-based Video Compression</strong><br>
-            Learned frame prediction under constrained information budgets,
-            integrating optical flow and multimodal conditioning.
-        </li>
-        <li>
-            <strong>Real-time Vision for Disaster Response</strong><br>
-            Optimized deep learning models deployed on edge devices for
-            real-time object detection.
-        </li>
-    </ul>
-</section>
-
-<section>
-    <h2>Research Interests</h2>
-    <ul>
-        <li>Computational Neuroscience</li>
-        <li>Generative Models (Diffusion, VAEs)</li>
-        <li>Information Theory & Representation Learning</li>
-        <li>Human Perception and Cognition</li>
     </ul>
 </section>
 
