@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EEG-Vision Representation Alignment | Maryam Sana</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<div class="topnav">
+    <div class="inner">
+        <a class="brand" href="../index.html">Maryam Sana</a>
+        <a href="../index.html#about">About</a>
+        <a href="../index.html#education">Education</a>
+        <a href="../index.html#research">Research</a>
+        <a href="../awards.html">Awards &amp; Funding</a>
+        <a href="../index.html#contact">Contact</a>
+    </div>
+</div>
+<main class="project">
+<section>
+    <h1>EEG-Vision Representation Alignment</h1>
+    <p class="status">Status: Ongoing (PhD research, in preparation)</p>
+
+    <p>
+        Can we recover what a person is looking at from their brain activity alone? This project decodes
+        visual content from non-invasive EEG by aligning brain signals with the embedding space of a
+        pretrained vision-language model (CLIP), and then using that embedding to retrieve and
+        reconstruct the viewed image. Reading a neural representation is the first step towards
+        modulating it, for example in closed-loop stimulation, so decoding sits on the critical path.
+    </p>
+
+    <figure class="pfig">
+        <img class="fig fig-tall" src="../figures/eeg/sota_recon_comparison_grid_web.jpg" alt="Retrieval-conditioned reconstructions: ground truth, ours, ATMS and ENIGMA">
+        <figcaption>Retrieval-conditioned reconstructions on held-out THINGS-EEG2 concepts, one sample per category, compared with the ATMS and ENIGMA decoders. The EEG embedding ranks the real CLIP embeddings of the test images; the image generator is conditioned on the top-ranked one.</figcaption>
+    </figure>
+
+    <h2>Pipeline</h2>
+    <ol>
+        <li><strong>EEG encoder.</strong> A transformer-and-CNN encoder with a learned subject token maps each EEG trial to a 1024-d vector in CLIP ViT-H/14 space.</li>
+        <li><strong>Contrastive alignment.</strong> Each trial is pulled towards its matching image embedding and pushed away from the others. A flow-prior regulariser and a hierarchical loss that distils CLIP's image-to-image similarity structure sit on top of this objective.</li>
+        <li><strong>Retrieval.</strong> The EEG embedding ranks the candidate CLIP embeddings of real images.</li>
+        <li><strong>Generation.</strong> A diffusion model (IP-Adapter on SDXL-Turbo) renders an image from the retrieved embedding. A separate EEG-to-VAE-latent head supplies low-level colour and layout.</li>
+    </ol>
+    <p>
+        Experiments use the THINGS-EEG2 dataset: 10 subjects, 63 channels, and 200-way retrieval on held-out concepts.
+    </p>
+
+    <h2>What the work shows</h2>
+    <h3>Reconstruction depends on the conditioning vector lying on the CLIP manifold</h3>
+    <p>
+        Feeding the encoder's raw output to the generator, or passing it through a learned diffusion prior,
+        yields generic images unrelated to the stimulus. Conditioning on a real CLIP embedding selected by
+        the EEG works. Reconstruction quality is therefore governed by whether the conditioning vector lies on the
+        CLIP manifold, more than by how good the encoder is.
+    </p>
+
+    <h3>Right order, wrong place</h3>
+    <p>
+        A contrastive loss asks only for a ranking, not an absolute position. EEG embeddings can rank the correct
+        image first and still sit in a region of the space where no real image embedding lives, the
+        modality gap. The embedding-space maps below show EEG and image embeddings forming separate clusters.
+    </p>
+
+    <figure class="pfig">
+        <img class="fig fig-wide" src="../figures/eeg/flow_prior_tsne_custom_4way_2x2.png" alt="t-SNE of EEG and CLIP image embeddings under four training variants">
+        <figcaption>t-SNE of EEG (&times;) and CLIP image (&bull;) embeddings, coloured by super-category, 10 subjects pooled. Panels: baseline, flow prior, hierarchical loss, and both. EEG and image embeddings occupy separate regions in every variant.</figcaption>
+    </figure>
+
+    <figure class="pfig">
+        <img class="fig fig-wide" src="../figures/eeg/flow_prior_tsne_dimension_ablation_3way.png" alt="t-SNE of the flow prior at different dimensionalities and corpora">
+        <figcaption>Flow prior ablation (single subject): a 32-d prior trained on THINGS only, and 256-d and 1024-d priors trained on COCO.</figcaption>
+    </figure>
+
+    <h3>Top-k retrieval conflates two skills</h3>
+    <p>
+        Retrieval accuracy mixes <em>extraction</em> (did the model find the stimulus signal in the EEG?) and
+        <em>alignment</em> (did it place that signal correctly in CLIP space?). A split-half test isolates extraction
+        without CLIP: average one random half of an image's repetitions, average the other half, and ask whether the two
+        halves match each other. Across three independently built encoders, 97&ndash;99% of the stimulus information
+        is found in the EEG, yet only 15&ndash;31% reaches CLIP space. This is a property of the paradigm rather than of any single method.
+    </p>
+
+    <h3>Three failure modes</h3>
+    <p>
+        Decoders can fail at <em>extraction</em> (no stimulus signal recovered), <em>structure</em> (signal recovered
+        but organised differently from CLIP) or <em>placement</em> (right geometry, wrong absolute position). Models
+        rank differently on each axis, so a single retrieval score hides where a decoder breaks. Training across
+        subjects, for instance, exposes a per-subject offset in placement that retrieval accuracy alone would not reveal.
+    </p>
+
+    <h2>Data quality</h2>
+    <figure class="pfig">
+        <img class="fig" src="../figures/eeg/qc_blink_subepochs/P06_full_trial_gfp_raw_vs_cleaned.png" alt="Global field power, raw versus ICA-cleaned">
+        <figcaption>Global field power for one trial before (top) and after (bottom) ICA-based ocular artifact removal.</figcaption>
+    </figure>
+
+    <p class="muted">
+        This work is in progress; further results will be added once the paper is submitted.
+    </p>
+
+    <p class="back"><a href="../index.html#research">&larr; All research</a></p>
+</section>
+</main>
+</body>
+</html>

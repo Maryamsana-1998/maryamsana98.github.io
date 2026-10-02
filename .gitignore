@@ -1,0 +1,9 @@
+# Unpublished EEG figures: only the explicitly allowed one is tracked
+figures/eeg/*
+!figures/eeg/sota_recon_comparison_grid_web.jpg
+!figures/eeg/flow_prior_tsne_custom_4way_2x2.png
+!figures/eeg/flow_prior_tsne_dimension_ablation_3way.png
+!figures/eeg/qc_blink_subepochs/
+figures/eeg/qc_blink_subepochs/*
+!figures/eeg/qc_blink_subepochs/P06_full_trial_gfp_raw_vs_cleaned.png
+.claude/

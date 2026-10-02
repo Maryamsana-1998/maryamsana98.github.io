@@ -4,104 +4,105 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Maryam Sana | Research Profile</title>
-    <style>
-        body {
-            font-family: Arial, Helvetica, sans-serif;
-            max-width: 900px;
-            margin: 40px auto;
-            padding: 0 20px;
-            line-height: 1.6;
-            color: #222;
-        }
-        header {
-            display: flex;
-            align-items: center;
-            gap: 30px;
-            margin-bottom: 30px;
-        }
-        img {
-            width: 160px;
-            height: 160px;
-            border-radius: 50%;
-            object-fit: cover;
-        }
-        nav a {
-            margin-right: 15px;
-            text-decoration: none;
-            color: #0066cc;
-        }
-        h1 {
-            margin: 0;
-        }
-        h2 {
-            margin-top: 40px;
-            border-bottom: 1px solid #ddd;
-            padding-bottom: 5px;
-        }
-        .subtitle {
-            color: #555;
-        }
-    </style>
+    <meta name="description" content="Maryam Sana: PhD candidate in computational neuroscience at Philipps-Universität Marburg. EEG decoding, generative models, video compression.">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<header>
-    <img src="profile_pic.jpg" alt="Profile Picture">
+<div class="topnav">
+    <div class="inner">
+        <a class="brand" href="index.html">Maryam Sana</a>
+        <a href="#about">About</a>
+        <a href="#education">Education</a>
+        <a href="#research">Research</a>
+        <a href="awards.html">Awards &amp; Funding</a>
+        <a href="#contact">Contact</a>
+    </div>
+</div>
+
+<main>
+
+<div class="hero">
+    <img src="profile_pic.jpg" alt="Maryam Sana">
     <div>
         <h1>Maryam Sana</h1>
         <p class="subtitle">
-            Machine Learning · Generative Models · Computational Neuroscience
+            PhD Candidate, Computational Neuroscience<br>
+            Philipps-Universität Marburg &amp; Psychcontrol Lab, UKGM
         </p>
-        <p>
-            Email: maryam.sana@khu.ac.kr<br>
-            GitHub: github.com/Maryamsana-1998
+        <p class="buttons">
+            <a class="btn" href="cv/Maryam_Sana_CV.pdf" download>Download CV</a>
+            <a class="btn btn-outline" href="mailto:sanama@uni-marburg.de">Email me</a>
         </p>
-        <nav>
-            <a href="index.html">Home</a>
-            <a href="projects.html">Projects</a>
-            <a href="awards.html">Awards & Funding</a>
-        </nav>
+        <p class="links">
+            <a href="https://github.com/Maryamsana-1998">GitHub</a>
+            <a href="https://linkedin.com/in/maryamsana98/">LinkedIn</a>
+        </p>
     </div>
-</header>
+</div>
 
-<section>
-    <h2>Bio</h2>
+<section id="about">
+    <h2>About</h2>
     <p>
-        I am a computer science and machine learning researcher with a strong interest in understanding 
-        human cognition and brain dynamics through computational modeling. My background is in deep generative models, 
-        video understanding, and representation learning, with current work extending these methods to neural data analysis.
-        I am particularly interested in the parallels between video modeling and brain dynamics—viewing fMRI as spatiotemporal data
-         where distributed neural activity evolves over time. By leveraging ideas from information theory, 
-         generative modeling, and representation learning, I aim to bridge machine learning and computational neuroscience. 
-         
+        I am a PhD candidate in computational neuroscience at Philipps-Universität Marburg,
+        working in the Psychcontrol Lab at the University Hospital Giessen and Marburg (UKGM).
+        My work builds deep learning decoders that read out visual information from EEG, aligning brain
+        signals with the semantic embedding space of vision-language models to enable image retrieval
+        and reconstruction.
     </p>
     <p>
-        My research focuses on understanding and reconstructing perceptual representations from constrained
-        information sources, such as neural signals and compressed video. I have worked extensively with
-        diffusion models, VAEs, and multimodal learning, applying information-theoretic perspectives to both
-        artificial and biological systems.
+        Before this, I completed my Master's in Computer Science and Engineering at Kyung Hee University,
+        where I developed diffusion-based generative models for video compression and prediction.
+        I am interested in how perceptual representations can be recovered from constrained information
+        sources, whether a compressed bitstream or a noisy neural signal, using ideas from generative
+        modeling, representation learning and information theory.
     </p>
-    <p>
-        Currently, I am working as a research assistant at the Psychcontrol Lab (UKGM Marburg), where I analyze
-        EEG and fMRI data to study how visual information is encoded and reconstructed from neural activity.
-        I have completed my Master’s degree and am currently seeking PhD opportunities at the intersection of AI, cognition, and brain science.
-    </p>
-</section>
-
-<section>
-    <h2>Education</h2>
-    <ul>
-        <li>
-            <strong>Master’s in Computer Science</strong><br>
-            Kyung Hee University, South Korea<br>
-            Focus: Generative Models, Video Compression, Deep Learning
-        </li>
-        <li>
-            <strong>Bachelor’s in Electrical Engineering</strong><br>
-            Focus: Signal Processing, Linear Algebra, Probability, Systems
-        </li>
+    <ul class="interests">
+        <li>Neural decoding</li>
+        <li>EEG</li>
+        <li>Representation learning</li>
+        <li>Diffusion models</li>
+        <li>Multimodal alignment</li>
+        <li>Video compression</li>
+        <li>Efficient inference</li>
     </ul>
 </section>
+
+
+<section id="education" class="split">
+    <h2>Education</h2>
+    <div class="grid">
+            <div class="gcard"><img class="c-img" src="figures/uni-marburg_Rolf_.jpg" alt="Philipps-Universität Marburg"><div class="c-body"><h3>Doctoral Candidate, Computational Neuroscience</h3><p>Philipps-Universität Marburg, Germany</p><p>2026 – 2029</p></div></div>
+            <div class="gcard"><img class="c-img" src="figures/kyung_hee_university.jpg" alt="Kyung Hee University"><div class="c-body"><h3>M.Sc. Computer Science and Engineering</h3><p>Kyung Hee University, South Korea (CGPA 4.0/4.3)</p><p>2023 – 2026</p><p>Thesis: Latent Diffusion Models for Zero-Redundancy Video Coding</p></div></div>
+            <div class="gcard"><img class="c-img" src="figures/nust_campus.jpg" alt="NUST Islamabad"><div class="c-body"><h3>B.Sc. Electrical Engineering</h3><p>NUST, Islamabad, Pakistan (CGPA 3.18/4.0)</p><p>2017 – 2021</p></div></div>
+    </div>
+</section>
+
+<section id="research" class="split">
+    <h2>Research</h2>
+    <div class="grid">
+            <a class="gcard" href="projects/eeg.html"><img class="c-img top" src="figures/eeg/sota_recon_comparison_grid_web.jpg" alt="EEG reconstructions"><div class="c-body"><h3>EEG-Vision Representation Alignment</h3><p>Ongoing (PhD)</p><p>Decoding visual content from EEG by aligning brain signals with CLIP embeddings.</p></div></a>
+            <a class="gcard" href="projects/video-compression.html"><img class="c-img contain" src="figures/video_compression/enc_dec_pair.png" alt="Encoder and decoder architecture"><div class="c-body"><h3>Perceptual Video Compression with Diffusion</h3><p>Completed (Master's)</p><p>A diffusion codec that sends sparse semantic priors and motion at ultra-low bitrates.</p></div></a>
+            <a class="gcard" href="projects/rtdm.html"><img class="c-img contain" src="projects/figs/RTDM_final.png" alt="RTDM module overview"><div class="c-body"><h3>Real-Time Disaster Management on UAVs</h3><p>Completed (Undergraduate)</p><p>Quantized classification and detection running on-board NVIDIA Jetson.</p></div></a>
+    </div>
+</section>
+
+
+<section id="contact">
+    <h2>Contact</h2>
+    <p>
+        <a href="mailto:sanama@uni-marburg.de">sanama@uni-marburg.de</a><br>
+        Marburg, Germany
+    </p>
+    <p>
+        <a class="btn" href="mailto:sanama@uni-marburg.de">Email me</a>
+        <a class="btn btn-outline" href="cv/Maryam_Sana_CV.pdf" download>Download CV</a>
+    </p>
+</section>
+
+</main>
+
+<footer>&copy; Maryam Sana</footer>
 
 </body>
 </html>

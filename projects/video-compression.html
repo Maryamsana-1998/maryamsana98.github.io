@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perceptual Video Compression with Diffusion | Maryam Sana</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<div class="topnav">
+    <div class="inner">
+        <a class="brand" href="../index.html">Maryam Sana</a>
+        <a href="../index.html#about">About</a>
+        <a href="../index.html#education">Education</a>
+        <a href="../index.html#research">Research</a>
+        <a href="../awards.html">Awards &amp; Funding</a>
+        <a href="../index.html#contact">Contact</a>
+    </div>
+</div>
+<main class="project">
+<section>
+    <h1>Perceptual Video Compression with Diffusion Models</h1>
+    <p class="status">Status: Completed (Master&rsquo;s Research, Kyung Hee University)</p>
+
+    <figure class="pfig">
+        <img class="fig fig-pair" src="../figures/video_compression/enc_dec_pair.png" alt="Encoder and decoder architecture side by side">
+        <figcaption>Left: the encoder transmits semantic and motion priors. Right: a controllable diffusion decoder synthesizes the intermediate frames.</figcaption>
+    </figure>
+
+    <h2>Problem</h2>
+    <p>
+        Ultra-low bitrate (ULB) video delivery in the range of <strong>0.005&ndash;0.02 bpp</strong>
+        remains largely unsolved. Classical codecs such as H.264 and HEVC optimize for
+        pixel-level distortion and exhibit severe perceptual degradation at these rates.
+    </p>
+
+    <h2>Method</h2>
+    <p>
+        I developed the first diffusion-based learned video codec capable of operating
+        effectively in this regime. The encoder transmits only sparse, high-level semantic
+        priors (latent keyframes and lightweight motion trajectories) while a controllable
+        diffusion model at the decoder synthesizes temporally coherent intermediate frames.
+    </p>
+
+    <h3>Motion-conditioned control module</h3>
+    <p>
+        Multi-scale flow features are fused with consistency-aware warping and injected into the
+        diffusion decoder through a ControlNet-style adapter with FiLM modulation.
+    </p>
+    <figure class="pfig">
+        <img class="fig fig-med" src="../figures/video_compression/BiFca-1.png" alt="Bidirectional consistency-aware control module">
+        <figcaption>Multi-scale feature extraction, consistency-aware warping and fusion, and ControlNet processing with FiLM modulation.</figcaption>
+    </figure>
+
+    <figure class="pfig">
+        <img class="fig fig-xs" src="../projects/figs/ciw-1.png" alt="Consistency-informed warping: soft-splat warping with occlusion-aware blending">
+        <figcaption>Consistency-informed warping: soft-splat warping followed by occlusion-aware blending.</figcaption>
+    </figure>
+
+    <h2>Qualitative comparison</h2>
+    <figure class="pfig">
+        <img class="fig fig-med" src="../figures/video_compression/visual_quality_comparison-1.png" alt="Visual comparison with H.264 and H.265 at about 0.01 bpp">
+        <figcaption>Bosphorus sequence at roughly 0.01 bpp (bpp / MS-SSIM): the proposed codec preserves structure and detail that H.264 and H.265 blur away.</figcaption>
+    </figure>
+
+    <h2>Key contributions</h2>
+    <ul>
+        <li>Semantic-guided generative video codec operating below 0.02 bpp.</li>
+        <li>Trajectory-aware synthesis improving temporal coherence and perceptual quality.</li>
+        <li>Comprehensive benchmarking against H.264, HEVC/VVC, and learned codecs.</li>
+    </ul>
+
+    <p class="back"><a href="../index.html#research">&larr; All research</a></p>
+</section>
+</main>
+</body>
+</html>
