@@ -216,3 +216,15 @@ img.fig-wide { width: 100%; }
 .pfig img.fig.fig-pair { max-width: 640px; }
 .pfig img.fig.fig-med { max-width: 440px; }
 .pfig img.fig.fig-xs { max-width: 260px; }
+
+/* news and publications */
+.news, .pubs { list-style: none; padding: 0; margin: 0; }
+.news li { display: grid; grid-template-columns: 90px 1fr; gap: 12px; padding: 10px 0; border-bottom: 1px solid var(--line); margin: 0; }
+.news li:last-child { border-bottom: 0; }
+.news .date { color: var(--muted); font-size: .85rem; padding-top: 2px; }
+.pubs > li { padding: 0 0 22px; margin: 0 0 22px; border-bottom: 1px solid var(--line); }
+.pubs > li:last-child { border-bottom: 0; }
+.pub-title { font-weight: 600; color: var(--accent); }
+.pub-authors { margin-top: 2px; }
+.pub-venue { color: var(--muted); font-size: .9rem; font-style: italic; margin-top: 2px; }
+@media (max-width: 560px) { .news li { grid-template-columns: 1fr; gap: 2px; } }
